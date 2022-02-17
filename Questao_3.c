@@ -20,6 +20,7 @@ int Anagrama(char palavra[])
 {
   int i, j, k, contagem = 0;
 
+  // EM ANDAMENTO...
   for (i = 0; i < '\0'; i++)
   {
     for ()
