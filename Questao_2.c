@@ -3,24 +3,27 @@
 #include <ctype.h>
 #define max 12
 
-void VerificaSenha(char senha[]);
+int VerificaSenha(char senha[]);
 
 int main()
 {
   setlocale(LC_ALL, "ptb");
   char senha[max];
+  int aux;
 
-  printf("Digite sua senha.\n#Ela deve conter no mÃ¡ximo 6 caracteres.\n#Conter no mÃ¡ximo um caractere numÃ©rico.\n#Conter no mÃ¡ximo 1 letra em maiÃºsculo.\n#Conter no mÃ¡ximo 1 letra em minÃºsculo.\n#Conter no mÃ¡ximo 1 caractere especial, tais como: !@#$%%^&*()-+\n");
-  printf("Senha: ");
-  scanf("%s", &senha);
-  printf("\n");
-  VerificaSenha(senha);
+  printf("Digite sua senha.\n#Ela deve conter no mínimo 6 caracteres.\n#Conter no mínimo um caractere numérico.\n#Conter no mínimo 1 letra em maiúsculo.\n#Conter no mínimo 1 letra em minúscuo.\n#Conter no mínimo 1 caractere especial, tais como: !@#$%%^&*()-+\n");
+  do
+  {
+    printf("Senha: ");
+    scanf("%s", &senha);
+    printf("\n");
+  } while (VerificaSenha(senha) == 0);
 
   return 0;
 }
 
-void VerificaSenha(char senha[])
-{
+int VerificaSenha(char senha[])
+{ // verificaÃ§Ã£o = 0
   int i, tamanho, numerico = 0, minuscula = 0, maiuscula = 0, especial = 0;
 
   tamanho = strlen(senha);
@@ -38,15 +41,20 @@ void VerificaSenha(char senha[])
   }
 
   if (tamanho < 6)
-    printf("Sua senha deve conter no mÃ¡ximo 6 caracteres! Falta(m) %d caracter(es).\n", 6 - tamanho);
+    printf("Sua senha deve conter no mínimo 6 caracteres! Falta(m) %d caracter(es).\n", 6 - tamanho);
   if (numerico < 1)
-    printf("Sua senha deve conter no mÃ¡ximo 1 caractere numÃ©rico!\n");
+    printf("Sua senha deve conter no mínimo 1 caractere numérico!\n");
   if (maiuscula < 1)
-    printf("Sua senha deve conter no mÃ¡ximo 1 letra maiÃºscula!\n");
+    printf("Sua senha deve conter no mínimo 1 letra maiÃºscula!\n");
   if (minuscula < 1)
-    printf("Sua senha deve conter no mÃ¡ximo 1 letra minÃºscula!\n");
+    printf("Sua senha deve conter no mínimo 1 letra minÃºscula!\n");
   if (especial < 1)
-    printf("Sua senha deve conter no mÃ¡ximo 1 caractere especial!\n");
+    printf("Sua senha deve conter no mínimo 1 caractere especial!\n");
   if (tamanho >= 6 && numerico >= 1 && maiuscula >= 1 && minuscula >= 1 && especial >= 1)
+  {
     printf("Sua senha foi criada com sucesso!\n");
+    return 1;
+  }
+  else
+    return 0;
 }

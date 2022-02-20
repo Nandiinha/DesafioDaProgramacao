@@ -9,7 +9,7 @@ int main()
   int degraus;
 
   printf("=*=*=*=*=*=*=ESCADA=*=*=*=*=*=*=\n\n");
-  printf("NÃºmero de degraus da escada: ");
+  printf("Número de degraus da escada: ");
   scanf("%d", &degraus);
   printf("\n");
   Escada(degraus);
